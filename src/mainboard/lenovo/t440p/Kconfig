@@ -70,4 +70,14 @@ config PS2M_EISAID
 config THINKPADEC_HKEY_EISAID
 	default "LEN0068"
 
+config OVERRIDE_DEVICETREE
+	default "overridetree_nogpu.cb" if !T440P_DGPU
+	default "overridetree_gpu.cb" if T440P_DGPU
+
+config T440P_DGPU
+        bool "Enable dedicated graphics (experimental)"
+        default n
+        help
+            This option may cause problems if the target machine doesn't have a dGPU
+
 endif

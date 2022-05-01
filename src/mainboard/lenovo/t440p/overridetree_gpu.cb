@@ -1,0 +1,5 @@
+chip northbridge/intel/haswell
+	device domain 0 on
+		device pci 01.1 on end	# Dedicated graphics' PCIe Bridge
+	end
+end
