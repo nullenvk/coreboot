@@ -22,8 +22,8 @@ static const struct pad_config override_gpio_table[] = {
 	PAD_NC(GPP_B2, NONE),
 	/* B3  : PROC_GP2 ==> NC */
 	PAD_NC(GPP_B3, NONE),
-	/* B15 : TIME_SYNC0 ==> NC */
-	PAD_NC(GPP_B15, NONE),
+	/* B15  : PROC_GP3 ==> AUD_RST_L */
+	PAD_CFG_GPO(GPP_B15, 1, PWROK),
 
 	/* C3  : GPP_C3 ==> SML0_SMBCLK */
 	PAD_CFG_NF(GPP_C3, NONE, DEEP, NF1),
@@ -40,6 +40,8 @@ static const struct pad_config override_gpio_table[] = {
 	PAD_NC(GPP_D14, NONE),
 	/* D15 : ISH_UART0_RTS# ==> NC */
 	PAD_NC(GPP_D15, NONE),
+	/* D16 : ISH_UART0_CTS# ==> EN_WCAM_PWR */
+	PAD_CFG_GPO_LOCK(GPP_D16, 1, LOCK_CONFIG),
 	/* D19 : I2S_MCLK1_OUT ==> NC */
 	PAD_NC(GPP_D19, NONE),
 
@@ -99,6 +101,14 @@ static const struct pad_config override_gpio_table[] = {
 
 	/* GPD11: LANPHYC ==> NC */
 	PAD_NC(GPD11, NONE),
+	PAD_CFG_NF(GPP_VGPIO_30, NONE, DEEP, NF3),	/* BT_I2S_BCLK */
+	PAD_CFG_NF(GPP_VGPIO_31, NONE, DEEP, NF3),	/* BT_I2S_SYNC */
+	PAD_CFG_NF(GPP_VGPIO_32, NONE, DEEP, NF3),	/* BT_I2S_SDO */
+	PAD_CFG_NF(GPP_VGPIO_33, NONE, DEEP, NF3),	/* BT_I2S_SDI */
+	PAD_CFG_NF(GPP_VGPIO_34, NONE, DEEP, NF1),	/* SSP2_SCLK */
+	PAD_CFG_NF(GPP_VGPIO_35, NONE, DEEP, NF1),	/* SSP2_SFRM */
+	PAD_CFG_NF(GPP_VGPIO_36, NONE, DEEP, NF1),	/* SSP_TXD */
+	PAD_CFG_NF(GPP_VGPIO_37, NONE, DEEP, NF1),	/* SSP_RXD */
 };
 
 /* Early pad configuration in bootblock */

@@ -9,6 +9,10 @@ fw_config
 		option	STORAGE_NVME	1
 		option	STORAGE_EMMC	2
 	end
+	field AUDIO 6
+		option AUDIO_UNKNOWN	0
+		option NAU88L25B_I2S	1
+	end
 end
 chip soc/intel/alderlake
 	# Enable HDMI2 in PortA, HDMI1 in PortB, HDMI/DP in Port2
@@ -76,6 +80,7 @@ chip soc/intel/alderlake
 				.clk_src = 5,
 				.clk_req = 5,
 				.flags = PCIE_RP_LTR | PCIE_RP_AER,
+				.pcie_rp_aspm = ASPM_DISABLE,
 			}"
 			device pci 00.0 on end
 		end # IntelI225V Ethernet NIC
@@ -139,7 +144,7 @@ chip soc/intel/alderlake
 					end
 					chip drivers/intel/pmc_mux/conn
 						use usb2_port3 as usb2_port
-						use tcss_usb3_port2 as usb3_port
+						use tcss_usb3_port3 as usb3_port
 						device generic 1 alias conn1 on end
 					end
 				end
@@ -158,7 +163,7 @@ chip soc/intel/alderlake
 						register "desc" = ""USB3 Type-C Port C2 (MLB)""
 						register "type" = "UPC_TYPE_C_USB2_SS_SWITCH"
 						register "custom_pld" = "ACPI_PLD_TYPE_C(FRONT, RIGHT, ACPI_PLD_GROUP(2, 1))"
-						device ref tcss_usb3_port2 on end
+						device ref tcss_usb3_port3 on end
 					end
 				end
 			end
